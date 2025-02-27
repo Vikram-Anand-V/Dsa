@@ -1,27 +1,46 @@
+#include<bits/stdc++.h>
+using namespace std;
 
-class Solution {
-  public:
-    // Function to count the number of digits in n that evenly divide n
-    int evenlyDivides(int n) {
-        
-        int count=0;
-        
-        int n1=n;
-        int r;
-        if( n>=1&&n<=10^5)
-        {
-        
-        while(n1>0)
-        {
-            r=n1%10;
-            n1=n1/10;
-          
-            if(r!=0 && n%r==0) count++;
-              
-        }
-        }
-    
-        return count;
+// Function to count the number of digits in an integer 'n'.
+
+
+// Brute force approach
+
+int countDigits(int n){
+    // Initialize a counter variable
+    // 'cnt' to store the count of digits.
+    int cnt = 0;
+    // While loop iterates until 'n'
+    // becomes 0 (no more digits left).
+    while(n > 0){
+        // Increment the counter
+        // for each digit encountered.
+        cnt = cnt + 1;
+        // Divide 'n' by 10 to
+        // remove the last digit.
+        n = n / 10;
     }
-    
-};
+    // Return the
+    // count of digits.
+    return cnt;
+}
+
+
+// optimal approach - using log 10 
+
+int countDigits_optimized(int n)
+{
+    int count=log10(n)+1;
+    return count;
+}
+
+int main() {
+    int N = 329823;
+    cout << "N: "<< N << endl;
+    int digits = countDigits_optimized(N);
+    cout << "Number of Digits in N: "<< digits << endl;
+    return 0;
+}
+
+                                
+                            
